@@ -48,7 +48,7 @@ jobs:
 
       - name: Copy dist to gh-pages
         run: |
-          git chekcout gh-pages
+          git checkout gh-pages
           rm -rf *
           cp -r dist/*
           git add .
