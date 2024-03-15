@@ -45,13 +45,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: dist-files
-        
-      - name: Create gh-pages branch
-        run: |
-          git checkout --orphan gh-pages
-          git reset --hard
-          git commit --allow-empty -m "Init gh-pages branch"
-          git push origin gh-pages --force
 
       - name: Copy dist to gh-pages
         run: |
