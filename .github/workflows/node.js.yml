@@ -45,10 +45,29 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: dist-files
+        
+      - name: Configure Git
+        run: |
+          git config --global user.email "tim.harbeck@harbeckdom.de"
+          git config --global user.name "Timmmermann00"
+      
+      - name: Create gh-pages branch
+        run: |
+          git checkout --orphan gh-pages
+          git rm -rf .
+          git commit --allow-empty -m "Init gh-pages branch"
+          git push origin gh-pages --force
+
+      - name: Create gh-pages branch
+        run: |
+          git checkout --orphan gh-pages
+          git reset --hard
+          git commit --allow-empty -m "Init gh-pages branch"
+          git push origin gh-pages --force
 
       - name: Copy dist to gh-pages
         run: |
-          git checkout gh-pages
+          git chekcout gh-pages
           rm -rf *
           cp -r dist/*
           git add .
